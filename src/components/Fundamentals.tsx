@@ -38,10 +38,63 @@ export default function Fundamentals() {
     //console.log(splitString);
     return true;
   }
-  console.log(isIsogram("aba"));
-  console.log(isIsogram("christ"));
-  console.log(isIsogram("bbb"));
-  console.log("moose" + isIsogram("mOose"));
+  // console.log(isIsogram("aba"));
+  // console.log(isIsogram("christ"));
+  // console.log(isIsogram("bbb"));
+  // console.log("moose" + isIsogram("mOose"));
 
+  function isSquare(n: number): boolean {
+    const perfect = Math.sqrt(n);
+    if (Number.isInteger(perfect)) {
+      return true;
+    }
+    return false;
+  }
+  // console.log(isSquare(-1));
+  // console.log(isSquare(0));
+  // console.log(isSquare(3));
+
+  const likes = (a: string[]): string => {
+    let likesString = "";
+    switch (a.length) {
+      case 0:
+        likesString = "no one likes this";
+        break;
+      case 1:
+        likesString = `${a[0]} likes this`;
+        break;
+      case 2:
+        likesString = `${a[0]} and ${a[1]}like this`;
+        break;
+      case 3:
+        likesString = `${a[0]}, ${a[1]} and ${a[2]}like this`;
+        break;
+      default:
+        likesString = `${a[0]}, ${a[1]} and ${a.length - 2} others like this`;
+    }
+    return likesString;
+  };
+  // console.log(likes(["Alex", "Jacob", "Mark", "Max", "tom", "randy"]));
+
+  const isPangram = (phrase: string): boolean => {
+    const lettersUsed: string[] = [];
+    const alphabet: string[] = "abcdefghijklmnopqrstuvwxyz".split("");
+    const lowerPhrase = phrase.toLowerCase();
+    //loop through each letter of phrase
+    for (let i = 0; i < alphabet.length; i++) {
+      //check if each letter of phrase is includes each letter from the alphabet
+      if (lowerPhrase.includes(alphabet[i])) {
+        lettersUsed.push(alphabet[i]);
+      }
+    }
+
+    if (lettersUsed.length === 26) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  console.log(isPangram("the quick"));
+  console.log(isPangram("The Quick brown Fox jumps over the lazy dog."));
   return <div></div>;
 }

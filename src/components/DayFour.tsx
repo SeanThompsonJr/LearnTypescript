@@ -78,6 +78,7 @@ export default function DayFour() {
   }
   class Rectanlge extends Shape {
     constructor(public width: number, public height: number) {
+      //because rectangle is an extention of shape the super call must be here even if its empty
       super();
       this.height = height;
       this.width = width;
