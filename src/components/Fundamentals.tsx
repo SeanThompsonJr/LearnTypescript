@@ -94,7 +94,56 @@ export default function Fundamentals() {
       return false;
     }
   };
-  console.log(isPangram("the quick"));
-  console.log(isPangram("The Quick brown Fox jumps over the lazy dog."));
+  // console.log(isPangram("the quick"));
+  // console.log(isPangram("The Quick brown Fox jumps over the lazy dog."));
+
+  function duplicateEncode(word: string) {
+    const lowerWord = word.toLowerCase();
+    //an obj named charCount that accepts an obj and returns an obj
+    // that has a propery of key that represents each letter and is a string type
+    //and returns a number
+    const charCount: { [key: string]: number } = {};
+
+    //count of letters that repeated
+    for (let i = 0; i < lowerWord.length; i++) {
+      //this is lost after the for loop is done
+      const char = lowerWord[i];
+      //this is not lost after the loop is done
+      charCount[char] = (charCount[char] || 0) + 1;
+    }
+
+    let encodedString = "";
+    for (let i = 0; i < lowerWord.length; i++) {
+      //so we can reuse the name here
+      const char = lowerWord[i];
+      //so we can use it to build the string
+      //if the charCount value at the index of char is greater than 1 then add the first parenthesis if not the second
+      encodedString += charCount[char] > 1 ? ")" : "(";
+      console.log(encodedString);
+    }
+
+    return encodedString;
+  }
+  console.log(duplicateEncode("tommm"));
+  console.log(duplicateEncode("tom"));
+  console.log(duplicateEncode("(( @"));
+
+  /**
+   * function isIsogram(str: string): boolean {
+    let splitString: Array<string> = [];
+    const usedLetters: Array<string> = [];
+    //splits the string into an array
+    splitString = str.split("");
+    //loop through the string comparing the one letter to the rest
+    for (let i: number = 0; i < splitString.length; i++) {
+      //if the used letters array has anything in split then return false
+      if (usedLetters.includes(splitString[i].toLocaleLowerCase()))
+        return false;
+      //if the used letters array does not have anything in split then add it to used letters
+      usedLetters.push(splitString[i].toLocaleLowerCase());
+    }
+
+    return true
+   */
   return <div></div>;
 }
