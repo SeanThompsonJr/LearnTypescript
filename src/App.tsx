@@ -6,7 +6,18 @@ import DayFour from "./components/DayFour";
 import Fundamentals from "./components/Fundamentals";
 import DayFive from "./components/DayFive";
 import DaySix from "./components/DaySix";
+import DaySeven from "./components/DaySeven";
+import { fetchData } from "./components/DaySeven";
 function App() {
+  async function displayData() {
+    try {
+      const data = await fetchData("https://api.example.com/data");
+      console.log("Data: ", data);
+    } catch (error) {
+      console.error("custome msg - Error fetching data:", error);
+    }
+  }
+  //displayData();
   return (
     <>
       {/* <DayTwo></DayTwo> */}
@@ -14,7 +25,8 @@ function App() {
       {/* <DayFour></DayFour> */}
       {/* <Fundamentals></Fundamentals> */}
       {/* <DayFive></DayFive> */}
-      <DaySix></DaySix>
+      {/* <DaySix></DaySix> */}
+      <DaySeven></DaySeven>
       <div className="text-5xl"></div>
     </>
   );
